@@ -29,13 +29,26 @@ In  `application.js`
     //= require jquery
     //= require jquery.jcrop
 
+Or if you want to use facebook profile banner style cropper, use jquery.guillotine instead:
+
+    //= require jquery
+    //= require jquery.guillotine
+
 In  `application.css`
 
     *= require jquery.jcrop
 
+Or
+
+    *= require jquery.guillotine
+
 Generate a coffeescript for cropping:
 
     rails generate cropper user avatar
+
+Or for guillotine style, use:
+
+    rails generate guillotine user avatar
 
  this should give you a file in:
 
@@ -85,6 +98,13 @@ In the view, say `crop.html.erb`:
     <%= form_for @user do |f| %>
       <%= f.cropbox :avatar %>
       <%= f.previewbox :avatar %>
+      <%= f.submit 'Crop' %>
+    <% end %>
+
+If using guillotine, previewbox is not needed:
+
+    <%= form_for @user do |f| %>
+      <%= f.cropbox :avatar %>
       <%= f.submit 'Crop' %>
     <% end %>
 
