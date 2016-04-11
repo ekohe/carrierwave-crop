@@ -80,6 +80,8 @@ module CarrierWave
             begin
               if width && height
                 resize_to_limit(width, height)
+              elsif width || height
+                resize_to_fit(width, height)
               end
               manipulate! do |img|
                 if attachment_instance.kind_of? CarrierWave::RMagick
